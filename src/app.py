@@ -67,9 +67,15 @@ def appointments():
     print(doctores)
     
     cursor.execute("""
+                   select a.id, u.email, d.nombre, d.especialidad
+                   from appoinment a
+                   JOIN users u ON a.user_id = u.id
+                   JOIN doctor d ON a.user_id = d.id
     """)
-
-    return render_template("appointments.html", doctores= doctores)
+    
+    citas = cursor.fetchall()
+    print(citas)
+    return render_template("appointments.html", doctores= doctores, citas = citas)
 
 
 ############################ RUTAS PARA GESTION CITAS ###########################33
