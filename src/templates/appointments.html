@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESTION DE CITAS MEDICAS</title>
+</head>
+<body>
+    <ul>
+        {% for doctor in doctores %}
+        <li>
+            {{ doctor[1] }}
+            <div>
+               <a href="/add/{{doctor[0]}}"><button>Reservar</button></a> 
+            </div>
+        </li>
+        
+        {% endfor %}
+
+    </ul>
+
+    <div>
+        <h1>Citas Agendadas</h1>
+        <ul>
+            <li>
+
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
