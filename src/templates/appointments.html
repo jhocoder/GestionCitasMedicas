@@ -21,11 +21,27 @@
 
     <div>
         <h1>Citas Agendadas</h1>
+        
         <ul>
-            <li>
-
-            </li>
+            {% for cita in citas %}
+                <li id="cita-{{ cita[0] }}" {% if cita[4] == 'completada' %} style="text-decoration: line-through; opacity: 0.6;" {% endif %}>
+                    <strong>Paciente:</strong> {{ cita[1] }}<br>
+                    <strong>Doctor:</strong> {{ cita[2] }} ({{ cita[3] }})<br>
+                    <strong>Estado:</strong> {{ cita[4] }}
+                    <div>
+                        {% if cita[4] == 'pendiente' %}
+                            <a href="/complete/{{ cita[0] }}" class="completar-btn" data-id="{{ cita[0] }}">
+                                <button>Completar</button>
+                            </a>
+                        {% endif %}
+                        <a href="/delete/{{ cita[0] }}">
+                            <button>Eliminar Cita</button>
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
         </ul>
+        
     </div>
 </body>
 </html>
